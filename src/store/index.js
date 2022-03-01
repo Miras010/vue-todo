@@ -1,11 +1,11 @@
 import {createStore} from "vuex";
-import {postModule} from "./postModule";
 import axios from "axios";
 
 export default createStore({
     state: () => ({
         posts: [],
-        limit: 10
+        // Значение не используется
+        // limit: 10
     }),
     getters: {
         allPosts(state) {
@@ -41,6 +41,7 @@ export default createStore({
             }
         }
     },
-    namespaced: true
+    // namespaced используется в случаях, когда стор разбит на модули
+    // namespaced: true
 })
 

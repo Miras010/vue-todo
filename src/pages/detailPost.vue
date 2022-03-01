@@ -9,14 +9,19 @@
 <script>
 
 export default {
-  data() {
-    return {
-      post: this.$store.getters.detailPost(Number(this.$route.params.id))
-    }
+	// не забывай давать названия компонентам
+	name: 'DetailPosts',
+	// Если в роуте есть динамические параметры, то в компоненте из можно получить через props
+	props: {
+		id: {
+			type: String
+		}
+	},
+	// Если значение зависит от изменения других данных, то лучше рассчитывать его через компьютед
+  computed: {
+		post() {
+			return this.$store.getters.detailPost(Number(this.id))
+		}
   }
 }
 </script>
-
-<style scoped>
-
-</style>

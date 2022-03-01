@@ -6,13 +6,14 @@
 </template>
 
 <script>
-import navbar from "./components/navbar";
+// Если используешь alias, то тогда стоит использовать его везде
+import navbar from "@/components/navbar"
+
 export default {
+	name: 'App',
   components: {
     navbar
   }
-
-
 }
 </script>
 
