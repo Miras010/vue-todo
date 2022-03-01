@@ -1,8 +1,11 @@
+// Стоит придерживаться одного стиля и использовать только один вид кавычек
 import { createApp } from 'vue'
+import store from './store'
+import router from './router/router'
+
 import App from './App.vue'
 import components from './components/ui'
-import store from "./store";
-import router from "./router/router"
+
 import 'bootstrap/dist/css/bootstrap.css'
 
 const app = createApp(App)

@@ -8,10 +8,12 @@
   </div>
 </template>
 <script>
-import UiInput from "./ui/uiInput";
-import axios from 'axios'
+import UiInput from "@/components/ui/uiInput"
+// Тут нам axios не нужен
+// import axios from 'axios'
 
 export default {
+	name: 'PostForm',
   components: {UiInput},
   data() {
     return {
@@ -28,8 +30,7 @@ export default {
         title: '',
         body: ''
       }
-    },
-
+    }
   }
 }
 </script>

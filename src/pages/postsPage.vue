@@ -1,7 +1,7 @@
 <template>
   <h3>The ToDo list app</h3>
-  <post-form @create="create" />
-  <post-list @remove="remove" :posts="allPosts"/>
+  <post-form @create="createPost" />
+  <post-list @remove="removePost" :posts="allPosts"/>
 </template>
 
 <script>
@@ -11,18 +11,23 @@ import postForm from '@/components/postForm'
 import {mapGetters, mapActions, mapMutations} from "vuex";
 
 export default {
+	// не забывай давать названия компонентам
+	name: 'PostsPages',
+	emits: ['remove'],
   components: {
-    postList, postForm
+    postList,
+		postForm
   },
   computed: mapGetters(['allPosts']),
   methods: {
     ...mapMutations(['createPost', 'removePost']),
-    create(post){
-      this.createPost(post)
-    },
-    remove(post){
-      this.removePost(post)
-    },
+		// Можно напрямую передавать методы из Vuex
+    // create(post){
+    //   this.createPost(post)
+    // },
+    // remove(post){
+    //   this.removePost(post)
+    // },
     ...mapActions(['fetchData'])
   },
 

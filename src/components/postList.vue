@@ -17,6 +17,8 @@
 import post from "./post";
 
 export default {
+	name: 'PostsList',
+	emits: ['remove'],
   components: {
     post,
   },

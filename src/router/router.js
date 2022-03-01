@@ -1,7 +1,9 @@
-import main from "../components/main";
-import {createRouter, createWebHashHistory} from "vue-router";
-import postsPage from "../components/postsPage";
-import detailPost from "../components/detailPost";
+import {createRouter, createWebHashHistory} from "vue-router"
+
+// страницы лучше перемещать в отдельную от компонентов директорию
+import main from "@/pages/main"
+import postsPage from "@/pages/postsPage"
+import detailPost from "@/pages/detailPost"
 
 
 const routes = [
@@ -15,7 +17,8 @@ const routes = [
     },
     {
         path: '/posts/:id',
-        component: detailPost
+        component: detailPost,
+        props: true
     }
 ]
 
