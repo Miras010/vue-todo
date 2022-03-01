@@ -21,13 +21,14 @@ export default {
       this.createPost(post)
     },
     remove(post){
-      this.removePost(post)
+      this.deletePost(post.id)
     },
-    ...mapActions(['fetchData'])
+    ...mapActions(['getData', 'deletePost'])
   },
 
-  async mounted() {
-    await this.fetchData(10)
+  mounted() {
+    // await this.fetchData(10)
+    this.getData(5)
   }
 
 }

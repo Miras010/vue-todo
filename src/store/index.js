@@ -28,18 +28,41 @@ export default createStore({
         },
     },
     actions: {
-        async fetchData (context, limit) {
-            try {
-                const resp = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+        getData(context, limit) {
+            return new Promise((resolve, reject) => {
+                axios.get('https://jsonplaceholder.typicode.com/posts', {
                     params: {
                         _limit: limit
                     }
+                }).then(resp => {
+                    resolve(context.commit('updatePosts', resp.data));
+                }).catch(function (err){
+                    resolve(err)
                 })
-                context.commit('updatePosts', resp.data)
-            } catch (e) {
-                alert(e)
-            }
-        }
+            })
+        },
+        deletePost(context, id) {
+            return new Promise((resolve, reject) => {
+                axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+                    .then(resp => {
+                        resolve(resp)
+                    })
+                    .catch(err => {
+                        reject(err)
+                    })
+            })
+        },
+        postData(context, post) {
+            return new Promise((resolve, reject) => {
+                axios.post('https://jsonplaceholder.typicode.com/posts/', post)
+                    .then(resp => {
+                        resolve(resp)
+                    })
+                    .catch(err => {
+                        reject(err)
+                    })
+            })
+        },
     },
     namespaced: true
 })
